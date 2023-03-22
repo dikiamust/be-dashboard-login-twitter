@@ -4,10 +4,7 @@ Follow these steps to set up The Project on your machine:
 
 1. Create a .env file.<br />
 2. Copy the .env.example file and rename it to .env.<br />
-3. Update the environment variables in this file to match your local setup.
-
-## Install Depedencies
-
+3. Update the environment variables in this file to match your local setup.<br />
 4. Install All Dependencies by this command:
 
 ```sh
