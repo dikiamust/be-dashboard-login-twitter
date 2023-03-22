@@ -2,11 +2,13 @@
 
 Follow these steps to set up The Project on your machine:
 
-Create a .env file: Copy the .env.example file and rename it to .env. Update the environment variables in this file to match your local setup.
+1. Create a .env file.<br />
+2. Copy the .env.example file and rename it to .env.<br />
+3. Update the environment variables in this file to match your local setup.
 
 ## Install Depedencies
 
-Install All Dependencies by this command:
+4. Install All Dependencies by this command:
 
 ```sh
 $ yarn install
@@ -14,7 +16,7 @@ $ yarn install
 
 ---
 
-Run the Project: Use one of the following commands to run the project locally:
+5. Run the Project: Use one of the following commands to run the project locally:
 
 yarn dev: This command will start the development server with hot reloading enabled.<br />
 yarn start: This command will start the production server.<br />
