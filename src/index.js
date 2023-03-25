@@ -5,10 +5,12 @@ const cors = require('cors');
 const connectDB = require('./database/mongo.config');
 const errorHandler = require('./middlewares/error.handler');
 const indexRouter = require('./modules/index.route');
+const cookieSession = require('cookie-session')
+const passport = require('passport');
 
 const app = express();
 
-const corsOptions = { origin: `http://localhost:3000` };
+const corsOptions = { origin: process.env.BASE_CLIENT_URL };
 app.use(cors(corsOptions));
 
 connectDB();
@@ -28,6 +30,22 @@ app.use((req, res, next) => {
 
 
 app.use(indexRouter);
+
+app.use(cookieSession({
+  name: 'twitter-auth-session',
+  keys: ['key1', 'key2']
+}))
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/auth/error', (req, res) => res.send('Unknown Error'))
+app.get('/auth/twitter',passport.authenticate('twitter'));
+app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/auth/error' }),
+  (req, res) => {
+    res.redirect('/');
+});
+
+
 app.use(errorHandler);
 
 const port = process.env.PORT || 4000;
